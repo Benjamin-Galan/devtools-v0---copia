@@ -1,0 +1,134 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header {
+    @include m.contenedor;
+    padding: 2rem;
+
+    @include m.tablet {
+        .nav {
+            display: block;
+
+            .dropdown {
+                display: none;
+            }
+        }
+    }
+}
+
+.header-content {
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu {
+        display: flex;
+
+        svg {
+            stroke: v.$blanco;
+            margin: 0 auto;
+        }
+
+        @include m.tablet {
+            display: none;
+        }
+    }
+
+    .nav-cont{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        svg{
+            width: 28px;
+        }
+    }
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+
+    a {
+        color: v.$blanco;
+    }
+
+    .content-logo {
+        display: flex;
+        align-items: center;
+
+        .logo-icon {
+            width: 3rem;
+            height: 3rem;
+            color: v.$primary;
+        }
+
+        .logo-text {
+            margin: 0;
+            font-size: 2.5rem;
+            padding-left: 0.8rem;
+            font-weight: bold;
+        }
+    }
+}
+
+.nav {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    transition: visibility .3s ease-in-out, opacity 0.3s linear, max-height 0.4s ease-out;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+
+    @include m.tablet {
+        opacity: 1;
+        visibility: visible;
+        max-height: 800px;
+        a {
+            margin-left: 2rem;
+        }
+    }
+
+    a {
+        color: v.$blanco;
+    }
+
+    .dropdown {
+        display: flex;
+        align-items: center;
+
+        svg {
+            transition: 0.4s ease-in-out;
+        }
+    }
+
+    .nav-link {
+        color: v.$text;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: var(--primary);
+    }
+}
+
+.show-menu {
+    visibility: visible;
+    opacity: 1;
+    max-height: 800px;
+    transition: visibility .3s ease-in-out, opacity 0.3s linear, max-height 0.4s ease-out;
+}
+
+.rotate {
+    transition: 0.4s ease-in-out;
+    rotate: -90deg;
+}
